@@ -1,0 +1,30 @@
+@import url('http://db.onlinewebfonts.com/c/03e852a9d1635cf25800b41001ee80c7?family=Trebuchet + MS');
+
+// @use "sass:map";
+
+/* Screens */
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$columns: 12;
+$column-gap: 0em;
+
+/* Fonts */
+
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+/* Colors */
+$color-1: #264653;
+$color-2: #2a9d8f;
+$color-3: #e9c46a;
+$color-4: #f4a261;
+$color-5: #e76f51;
+
+$white: #faf9f9;
+$black: #000000;

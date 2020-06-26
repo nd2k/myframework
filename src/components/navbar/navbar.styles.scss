@@ -1,0 +1,32 @@
+@import '../../styles/partials/variables';
+
+nav {
+  width: 100%;
+  border-bottom: 1px solid rgba($color: $color-1, $alpha: 0.2);
+  padding: 0 auto;
+  font-size: 1.2rem;
+  .menu {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    li {
+      display: inline-block;
+      align-items: center;
+      margin: 0 1rem;
+      a {
+        text-decoration: none;
+        color: $black;
+        display: block;
+      }
+    }
+    // .right {
+    //   display: flex;
+    //   justify-content: flex-end;
+    //   .icon {
+    //     cursor: pointer;
+    //   }
+    // }
+  }
+}

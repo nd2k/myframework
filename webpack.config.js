@@ -38,9 +38,26 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      // scss to string to apply on web component
+      {
+        test: /\.styles.scss$/,
+        exclude: /node_modules/,
+        use: [
+          'sass-to-string',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                outputStyle: 'compressed',
+              },
+            },
+          },
+        ],
+      },
       // scss rule
       {
         test: /\.s[ac]ss$/i,
+        exclude: [/\.styles.scss$/, /node_modules/],
         use: [
           // Creates `style` nodes from JS strings
           'style-loader',
