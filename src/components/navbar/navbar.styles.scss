@@ -17,16 +17,23 @@ nav {
       margin: 0 1rem;
       a {
         text-decoration: none;
-        color: $black;
         display: block;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        display: inline;
+        padding-bottom: 1rem;
+        color: rgba($black, $alpha: 0.8);
+      }
+      a:hover {
+        border-bottom-color: $color-1;
+        transition: all 0.5s;
+        color: $black;
+      }
+      .active {
+        border-bottom-color: $color-1;
+        transition: all 0.5s;
+        color: $black;
       }
     }
-    // .right {
-    //   display: flex;
-    //   justify-content: flex-end;
-    //   .icon {
-    //     cursor: pointer;
-    //   }
-    // }
   }
 }

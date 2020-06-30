@@ -6,13 +6,13 @@ const template = document.createElement('template');
 template.innerHTML = `
 <nav>
   <ul class="menu">
-    <div className="left">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Dashboard</a></li>
+    <div class="left">
+      <li><a class="nav-link active" route="/">Home</a></li>
+      <li><a class="nav-link" route="/dashboard">Dashboard</a></li>
     </div>
-    <div className="right">
-      <li><a href="#" class="right">Sign In</a></>
-      <li><a href="#" class="right">Sign Up</a></li>
+    <div class="right">
+      <li><a class="nav-link" route="/signin">Sign In</a></>
+      <li><a class="nav-link" route="/signup">Sign Up</a></li>
       <li><slot name="icon" class="right icon"></slot></li>
     </div>
   </ul>
@@ -22,17 +22,28 @@ template.innerHTML = `
 class Navbar extends HTMLElement {
   constructor() {
     super();
+    this.attachShadow({ mode: 'open' });
+
+    const style = document.createElement('style');
+    style.textContent = styles;
+    this.shadowRoot.appendChild(style);
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     library.add(faBars);
     dom.watch();
 
-    const style = document.createElement('style');
-    style.textContent = styles;
+    let links = this.shadowRoot.querySelectorAll('[route]');
 
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(style);
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        let activeLink = this.shadowRoot.querySelector('.active');
+        activeLink.classList.remove('active');
+        event.currentTarget.classList.add('active');
+      });
+    });
   }
 }
 
 window.customElements.define('custom-navbar', Navbar);
+
+export default Navbar;
