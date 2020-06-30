@@ -7,6 +7,7 @@ import homeView from './views/home';
 import dashboardView from './views/dashboard';
 import signInView from './views/signin';
 import signUpView from './views/signup';
+import errorView from './views/404';
 
 const myRouter = new Router([
   {
@@ -29,15 +30,9 @@ const myRouter = new Router([
     name: 'Sign Up',
     view: signUpView,
   },
+  {
+    path: '/error',
+    name: '404',
+    view: errorView,
+  },
 ]);
-
-export default myRouter;
-
-// router.createRoute('/', function (req) {
-//   console.log(req);
-// });
-// router.createRoute('/dashboard', (req) => {
-//   console.log(req);
-// });
-
-// router.init();

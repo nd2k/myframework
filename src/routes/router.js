@@ -15,33 +15,28 @@ class Router {
     });
 
     let route = routes.filter((r) => {
-      return r.path === currentPath;
+      let isMatch = r.path === currentPath;
+      if (isMatch) {
+        return isMatch;
+      }
+      return r.path === '/error';
     })[0];
-
-    if (!route) {
-      window.pushState({ navigate: `404` }, '', 'Error');
-      app.innerHTML = `Route is not existing`;
-    } else {
-      app.innerHTML = route.view();
-    }
+    window.history.pushState({ navigate: `${route.path}` }, 'name', route.path);
+    app.innerHTML = route.view();
   };
 
   navigate = (event) => {
     let targetRoute = event.path[0].attributes[1].value;
     let route = this.routes.filter((r) => {
-      return r.path === targetRoute;
+      let isMatch = r.path === targetRoute;
+      if (isMatch) {
+        return isMatch;
+      }
+      return r.path === '/error';
     })[0];
-    if (!route) {
-      window.pushState({ navigate: `404` }, '', 'Error');
-      app.innerHTML = `Route ${targetRoute} is not existing`;
-    } else {
-      window.history.pushState(
-        { navigate: `${route.path}` },
-        'name',
-        route.path
-      );
-      app.innerHTML = route.view();
-    }
+
+    window.history.pushState({ navigate: `${route.path}` }, 'name', route.path);
+    app.innerHTML = route.view();
   };
 }
 
