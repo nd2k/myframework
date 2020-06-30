@@ -1,5 +1,7 @@
 import './styles/styles.scss';
+import './helpers/eventBus';
 import './components/navbar/navbar';
+import './components/drawer/drawer';
 
 import Router from './routes/router';
 
