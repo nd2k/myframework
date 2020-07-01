@@ -1,2 +1,6 @@
 @import './partials/reset';
 @import './partials/variables';
+
+#layout {
+  transition: margin-right 0.5s;
+}

@@ -1,0 +1,34 @@
+@import '../../styles/partials/variables';
+
+.drawer {
+  height: 100%;
+  width: 2.5rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: $color-1;
+  color: $white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 3rem;
+  white-space: nowrap;
+  display: none;
+  a {
+    padding: 1rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    .title {
+      padding-left: 1.5rem;
+    }
+  }
+  a:hover {
+    color: rgba($color-3, 1);
+  }
+  .active {
+    color: rgba($color-3, 1);
+  }
+}

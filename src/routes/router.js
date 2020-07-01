@@ -7,10 +7,16 @@ class Router {
   listen = (routes) => {
     let app = document.getElementById('app');
     let currentPath = document.location.pathname;
-    let navbar = document.getElementById('navbar').shadowRoot;
-    let activeRoutes = Array.from(navbar.querySelectorAll('[route]'));
-
-    activeRoutes.forEach((route) => {
+    let navbarLinks = document.getElementById('_navbar').shadowRoot;
+    let drawerLinks = document.getElementById('_drawer').shadowRoot;
+    let accessibleRoutes = [];
+    accessibleRoutes.push(
+      ...Array.from(navbarLinks.querySelectorAll('[route]'))
+    );
+    accessibleRoutes.push(
+      ...Array.from(drawerLinks.querySelectorAll('[route]'))
+    );
+    accessibleRoutes.forEach((route) => {
       route.addEventListener('click', this.navigate);
     });
 

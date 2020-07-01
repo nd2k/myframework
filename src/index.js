@@ -2,6 +2,7 @@ import './styles/styles.scss';
 import './helpers/eventBus';
 import './components/navbar/navbar';
 import './components/drawer/drawer';
+import './helpers/activelink';
 
 import Router from './routes/router';
 
@@ -10,6 +11,7 @@ import dashboardView from './views/dashboard';
 import signInView from './views/signin';
 import signUpView from './views/signup';
 import errorView from './views/404';
+import projectsView from './views/projectsView';
 
 const myRouter = new Router([
   {
@@ -31,6 +33,11 @@ const myRouter = new Router([
     path: '/signup',
     name: 'Sign Up',
     view: signUpView,
+  },
+  {
+    path: '/projects',
+    name: 'Project',
+    view: projectsView,
   },
   {
     path: '/error',

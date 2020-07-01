@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
-    <custom-navbar id="navbar">
-      <i class="fa fa-bars" slot="icon"></i>
-    </custom-navbar>
-    <custom-drawer></custom-drawer>
-    <div id="app"></div>
+  <body id="body">
+    <custom-drawer id="_drawer">
+      <i class="fa fa-folder-open" slot="folder-open"></i>
+      <i class="fa fa-cog" slot="cog"></i>
+    </custom-drawer>
+    <div id="layout">
+      <custom-navbar id="_navbar">
+        <i class="fa fa-bars" slot="icon"></i>
+      </custom-navbar>
+      <div id="app"></div>
+    </div>
   </body>
 </html>

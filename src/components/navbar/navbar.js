@@ -2,6 +2,7 @@ import styles from './navbar.styles.scss';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import eventBus from '../../helpers/eventBus';
+import activeLink from '../../helpers/activelink';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -38,29 +39,32 @@ class Navbar extends HTMLElement {
     library.add(faBars);
     dom.watch();
 
-    // Toggle active class in navbar
-    let links = this.shadowRoot.querySelectorAll('[route]');
-    links.forEach((link) => {
-      link.addEventListener('click', (event) => {
-        let activeLink = this.shadowRoot.querySelector('.active');
-        activeLink.classList.remove('active');
-        event.currentTarget.classList.add('active');
-      });
-    });
+    // Bind this to all our methods
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+
+    // Get all needed properties
+    this.links = this.shadowRoot.querySelectorAll('[route]');
+    this.icon = this.shadowRoot.querySelector('.icon');
+  }
+
+  // Methods
+  toggleDrawer() {
+    eventBus.dispatchEvent('toggle-drawer', {});
   }
 
   // Handle click on hamburger menu
   connectedCallback() {
-    let icon = this.shadowRoot.querySelector('.icon');
-    icon.addEventListener('click', () => {
-      eventBus.dispatchEvent('toggle-drawer', { state: 'open' });
-      console.log(eventBus);
+    this.icon.addEventListener('click', this.toggleDrawer);
+    this.links.forEach((targetLink) => {
+      targetLink.addEventListener('click', () => {
+        let currentActiveLink = this.shadowRoot.querySelector('.active');
+        activeLink(currentActiveLink, targetLink);
+      });
     });
   }
 
   disconnectedCallback() {
-    let icon = this.shadowRoot.querySelector('.icon');
-    icon.removeEventListener();
+    this.icon.removeEventListener();
   }
 }
 
