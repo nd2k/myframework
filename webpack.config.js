@@ -36,10 +36,10 @@ module.exports = {
         ],
       },
       // css rule
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
+      // {
+      //   test: /\.css$/i,
+      //   use: ['style-loader', 'css-loader'],
+      // },
       // scss to string to apply on web component
       {
         test: /\.styles.scss$/,
@@ -61,12 +61,12 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         exclude: [/\.styles.scss$/, /node_modules/],
         use: [
-          // Creates `style` nodes from JS strings
           'style-loader',
-          // Translates CSS into CommonJS
+          MiniCssExtractPlugin.loader,
           'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+          },
         ],
       },
       // file rule
