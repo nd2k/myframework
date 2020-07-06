@@ -32,7 +32,11 @@ class Router {
   };
 
   navigate = (event) => {
-    let targetRoute = event.path[0].attributes[1].value;
+    let targetRoute =
+      event.path[0].attributes[1].value ||
+      (event.composePath().attributes[1].value &&
+        event.composedPath().attributes[1].value) ||
+      composedPath(event.target.attributes[1].value);
     let route = this.routes.filter((r) => {
       let isMatch = r.path === targetRoute;
       if (isMatch) {

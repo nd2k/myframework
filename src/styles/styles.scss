@@ -1,6 +1,22 @@
 @import './partials/reset';
 @import './partials/variables';
 
+@import '../views/home/home.scss';
+@import '../views/project/project.scss';
+
+// Base style
+
+body {
+  font-family: $font;
+  text-align: center;
+  font-size: 1rem;
+  background-color: $white-1;
+}
+
 #layout {
   transition: margin-right 0.5s;
+}
+
+#app {
+  margin-top: 2rem;
 }

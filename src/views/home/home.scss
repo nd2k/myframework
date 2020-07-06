@@ -1,0 +1,11 @@
+@import '../styles/partials/variables';
+
+#home {
+  font-size: 2rem;
+  margin: 4rem;
+  line-height: 3rem;
+  .jumbotron {
+    color: $color-1;
+    background-color: $lightGrey;
+  }
+}

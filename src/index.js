@@ -2,16 +2,20 @@ import './styles/styles.scss';
 import './helpers/eventBus';
 import './components/navbar/navbar';
 import './components/drawer/drawer';
+import './components/form/form-field/form-field';
+import './components/form/form-textarea/form-textarea';
+import './components/button/button';
+import './components/form/form';
 import './helpers/activelink';
 
 import Router from './routes/router';
 
-import homeView from './views/home';
-import dashboardView from './views/dashboard';
-import signInView from './views/signin';
-import signUpView from './views/signup';
+import homeView from './views/home/home';
+import dashboardView from './views/dashboard/dashboard';
+import signInView from './views/signin/signin';
+import signUpView from './views/signup/signup';
 import errorView from './views/404';
-import projectsView from './views/projectsView';
+import projectView from './views/project/projectView';
 
 const myRouter = new Router([
   {
@@ -37,7 +41,7 @@ const myRouter = new Router([
   {
     path: '/projects',
     name: 'Project',
-    view: projectsView,
+    view: projectView,
   },
   {
     path: '/error',

@@ -14,10 +14,12 @@ $column-gap: 0em;
 
 /* Fonts */
 
-* {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
-}
+$font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+  Arial, sans-serif;
+// * {
+//   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+//     'Lucida Sans', Arial, sans-serif;
+// }
 
 /* Colors */
 $color-1: #264653;
@@ -26,5 +28,7 @@ $color-3: #e9c46a;
 $color-4: #f4a261;
 $color-5: #e76f51;
 
-$white: #faf9f9;
+$white: #ffffff;
+$white-1: #f4f4f4;
 $black: #000000;
+$lightGrey: #d3d3d3;
