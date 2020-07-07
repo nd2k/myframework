@@ -1,9 +1,6 @@
 import styles from './form.styles.scss';
 import eventBus from '../../helpers/eventBus';
 
-// import { library, dom } from '@fortawesome/fontawesome-svg-core';
-// import { faUser } from '@fortawesome/free-solid-svg-icons';
-
 const template = document.createElement('template');
 template.innerHTML = `
 <div class="form">
@@ -29,36 +26,34 @@ class Form extends HTMLElement {
     // Create element in the shadow DOM
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    // Add font-awesome icon
-    // library.add(faUser);
-    // dom.watch();
-
     // Bind this to all our methods
-    this.getFieldsValue = this.getFieldsValue.bind(this);
+    // this.getFieldsValue = this.getFieldsValue.bind(this);
+    this.getFormFieldsValues = this.getFormFieldsValues.bind(this);
 
     // Get all needed properties
-    this.fields = document.querySelectorAll('.field-input');
+    this.fields = document.querySelectorAll('.field-input');    
   }
 
-  getFieldsValue() {
+  // Get JSON object with form values
+  getFormFieldsValues() {
     let projectFormInput = {};
     this.fields.forEach((field) => {
       let inputs = field.shadowRoot.querySelectorAll('.form-control');
       inputs.forEach((input) => {
         let name = input.name;
         let value = input.value;
-        let field = { name: value };
-        console.log(field);
-
-        return (projectFormInput = { ...projectFormInput, ...field });
+        if(name) {
+          projectFormInput[name] = value  
+        }
       });
-    });
-    console.log(projectFormInput);
+    });  
+    console.log(JSON.stringify(projectFormInput)); 
+    return JSON.stringify(projectFormInput);
   }
 
   // Listen eventBus to catch the click on the burger menu
   connectedCallback() {
-    eventBus.addEventListener('create-project', this.getFieldsValue);
+    eventBus.addEventListener('create-project', this.getFormFieldsValues);
   }
 
   disconnectedCallback() {}

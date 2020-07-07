@@ -10,7 +10,7 @@ export default () => {
     </form-field>
     <form-textarea label="Enter a summary of your project" name="projectDescription" class="field-input">
     </form-textarea>
-    <custom-button id="#createBtn" color="#264653">Create</custom-button>
+    <custom-button id="#createBtn" color="#264653" position="right">Create</custom-button>
   </custom-form>
 </div>
 `;

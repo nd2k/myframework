@@ -37,8 +37,16 @@ class Button extends HTMLElement {
 
     // Get all needed properties
     this.color = this.getAttribute('color');
+    this.position = this.getAttribute('position');
     this.button = this.shadowRoot.querySelector('.custom-button');
     this.button.style.backgroundColor = this.color;
+    if(this.position === 'center') {
+      this.button.classList.add('center')
+    } else if(this.position === 'right') {
+      this.button.classList.add('right')
+    } else if(this.position === 'left') {
+      this.button.classList.add('left')
+    }
   }
 
   getFormInputs() {
